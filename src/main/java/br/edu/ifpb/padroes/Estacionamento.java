@@ -13,20 +13,15 @@ import br.edu.ifpb.padroes.Veiculo;
 @Getter
 @Setter
 public abstract class Estacionamento {
-
-    protected LocalDateTime entrada;
-    protected LocalDateTime saida;
     private ArrayList<Veiculo> veiculos;
     
 
-    public Estacionamento(LocalDateTime entrada, LocalDateTime saida, ArrayList<Veiculo> veiculos) {
-		this.entrada = entrada;
-		this.saida = saida;
+    public Estacionamento(ArrayList<Veiculo> veiculos) {
 		this.veiculos = veiculos;
 	}
 
+    
 
-
-	public abstract BigDecimal obterTotalAPagar();
+	public abstract BigDecimal obterTotalAPagar(Veiculo v);
 
 }

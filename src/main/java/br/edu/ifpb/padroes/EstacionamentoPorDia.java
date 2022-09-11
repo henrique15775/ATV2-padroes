@@ -15,17 +15,15 @@ public class EstacionamentoPorDia extends Estacionamento {
 	
 	private static BigDecimal VALOR_DIA = new BigDecimal("26.00");
 
-	public EstacionamentoPorDia(LocalDateTime entrada, LocalDateTime saida, ArrayList<Veiculo> veiculos) {
-		super(entrada,saida,veiculos);
+	public EstacionamentoPorDia(ArrayList<Veiculo> veiculos) {
+		super(veiculos);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public BigDecimal obterTotalAPagar() {
-		assert(this.entrada != null && saida != null);
+	public BigDecimal obterTotalAPagar(Veiculo v) {
         BigDecimal valor = new BigDecimal(0);
-        Long periodoDays = Duration.between(entrada, saida).toDays();
-        valor = VALOR_DIA.multiply(new BigDecimal(periodoDays));
+        valor = VALOR_DIA.multiply(new BigDecimal(v.intervaloDias()));
         return valor;
 	}
 	
